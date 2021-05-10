@@ -2,9 +2,9 @@
   "name": "discord-modmail",
   "version": "1.0.0",
   "description": "JavaScript modmail bot with rich features.",
-  "main": "bot.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node bot.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "express": "^4.17.1",
