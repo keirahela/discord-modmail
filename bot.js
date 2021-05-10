@@ -14,7 +14,7 @@ client.on("ready", () => {
 })
 
 client.on("message", async message => {
-  
+
   if(message.channel.type === "dm"){
     const dbTable = new db.table("Tickets");
     if(message.author.bot) return;
@@ -102,7 +102,7 @@ client.on("message", async message => {
     var support = await table.get(`support_${support}`);
     let supportUser = client.users.cache.get(support.targetID);
     if(!supportUser) return message.channel.delete();
-    
+
     // reply (with user and role)
     if(message.content.startsWith(`${config.prefix}reply`)){
       var isPause = await table.get(`suspended${support.targetID}`);
@@ -119,7 +119,7 @@ client.on("message", async message => {
         return supportUser.send(`${message.author.username} > ${msg}`);
       }
     };
-    
+
     // anonymous reply
     if(message.content.startsWith(`${config.prefix}areply`)){
       var isPause = await table.get(`suspended${support.targetID}`);
@@ -131,12 +131,12 @@ client.on("message", async message => {
       message.react("✅");
       return supportUser.send(`Support Team > ${msg}`);
     };
-    
+
     // print user ID
     if(message.content === `${config.prefix}id`){
       return message.channel.send(`User's ID is **${support.targetID}**.`);
     };
-    
+
     // suspend a thread
     if(message.content === `${config.prefix}pause`){
       var isPause = await table.get(`suspended${support.targetID}`);
@@ -149,7 +149,7 @@ client.on("message", async message => {
       message.channel.send({embed: suspend});
       return client.users.cache.get(support.targetID).send("Your ticket has been paused. We'll send you a message when we're ready to continue.")
     };
-    
+
     // continue a thread
     if(message.content === `${config.prefix}continue`){
       var isPause = await table.get(`suspended${support.targetID}`);
@@ -161,7 +161,7 @@ client.on("message", async message => {
       message.channel.send({embed: c});
       return client.users.cache.get(support.targetID).send("Hi! Your ticket isn't paused anymore. We're ready to continue!");
     }
-    
+
     // block a user
     if(message.content.startsWith(`${config.prefix}block`)){
     var args = message.content.split(" ").slice(1)
@@ -185,9 +185,9 @@ client.on("message", async message => {
       message.channel.send({embed: c});
       return;
     }
-    
+
     // complete
-    if(message.content.toLowerCase() === `${config.prefix}complete`){
+    if(message.content.toLowerCase() === `${config.prefix}close`){
         var embed = new Discord.MessageEmbed()
         .setDescription(`This ticket will be deleted in **10** seconds...\n:lock: This thread has been locked and closed.`)
         .setColor("RED").setTimestamp()
@@ -230,4 +230,4 @@ client.on("message", async message => {
    the token should not be here.
    the token should be in the 1st line of the process.env file instead.
 */
-client.login(config.token); // Log the bot in
+client.login(process.env.token); // Log the bot in
