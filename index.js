@@ -230,4 +230,4 @@ client.on("message", async message => {
    the token should not be here.
    the token should be in the 1st line of the process.env file instead.
 */
-client.login(config.token); // Log the bot in
+client.login(process.env.token); // Log the bot in
