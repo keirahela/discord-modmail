@@ -33,7 +33,7 @@ client.on("message", async message => {
       let actualticket = await dbTable.get("ticket");
       channel = await guild.channels.create(`${message.author.username}-${message.author.discriminator}`, { type: 'text', reason: `New modmail thread: #${actualticket}.` });
       channel.setParent(config.ticketCategory);
-      channel.setTopic(`#${actualticket} | ${config.prefix}complete to close this ticket | Modmail for ${message.author.username}`)
+      channel.setTopic(`#${actualticket} | ${config.prefix}close to close this ticket | Modmail for ${message.author.username}`)
       channel.createOverwrite(modrole, {
         VIEW_CHANNEL: true,
         SEND_MESSAGES: true,
