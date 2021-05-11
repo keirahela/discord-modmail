@@ -129,7 +129,11 @@ client.on("message", async message => {
       var args = message.content.split(" ").slice(1)
       let msg = args.join(" ");
       message.react("✅");
-      return supportUser.send(`Support Team > ${msg}`);
+      const areplyEmbed = new Discord.MessageEmbed()
+      .setColor("BLUE").setAuthor(author.tag, author.avatarURL())
+      .setDescription(`Ticket #${actualticket} created.\nUser: ${author}\nID: ${author.id}`)
+      .setTimestamp()
+      return supportUser.send({embed:areplyEmbed});
     };
 
     // print user ID
