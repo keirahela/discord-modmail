@@ -116,7 +116,11 @@ client.on("message", async message => {
         let attachment = new Discord.MessageAttachment(message.attachments.first().url)
         return supportUser.send(`${message.author.username} > ${msg}`, {files: [message.attachments.first().url]})
       } else {
-        return supportUser.send(`${message.author.username} > ${msg}`);
+        const replyEmbed = new Discord.MessageEmbed()
+        .setColor("BLUE").setAuthor(author.tag, author.avatarURL())
+        .setDescription(`${message.author.username}\n\n${msg}`)
+        .setTimestamp()
+        return supportUser.send({embed: replyEmbed});
       }
     };
 
