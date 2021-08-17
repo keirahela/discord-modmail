@@ -1,3 +1,3 @@
 # Discord Mod Mail
 
-## Updated ModMail, i have no idea why i named it MemberCount, if you need help dm ```keirahela#0001``` on discord
+## Updated ModMail, if you need help dm ```keirahela#0001``` on discord
